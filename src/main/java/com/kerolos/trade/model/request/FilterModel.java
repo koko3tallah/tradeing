@@ -2,6 +2,8 @@ package com.kerolos.trade.model.request;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class FilterModel {
 
@@ -10,20 +12,20 @@ public class FilterModel {
     private String group;
     private String cat;
     private Long user_id;
-    private Double amount;
-    private Double balance_change;
+    private BigDecimal amount;
+    private BigDecimal balance_change;
     private String currency;
     private String pair;
     private String dir;
     private String status;
-    private Double winperc;
-    private Double duration;
-    private Double time_open;
-    private Double time_close;
-    private Double time_close_default;
-    private Double curs_open;
-    private Double curs_strike;
-    private Double curs_close;
+    private BigDecimal winperc;
+    private BigDecimal duration;
+    private String time_open;
+    private String time_close;
+    private String time_close_default;
+    private BigDecimal curs_open;
+    private BigDecimal curs_strike;
+    private BigDecimal curs_close;
     private Boolean riskfree;
     private Boolean is_time;
     private Boolean refunded;

@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Calculator {
 
-    private CalcBusiness calcBusiness;
+    private final CalcBusiness calcBusiness;
 
     public Calculator(CalcBusiness calcBusiness) {
         this.calcBusiness = calcBusiness;
     }
 
     @PostMapping("/calc")
-    private ResponseEntity calculatePeriodResult(@RequestBody OlympTradeFilterResult data) {
+    private ResponseEntity<CalcResponse> calculatePeriodResult(@RequestBody OlympTradeFilterResult data) {
         try {
             CalcResponse calcResponse = calcBusiness.calculatePeriodResult(data);
-            return new ResponseEntity(calcResponse, HttpStatus.OK);
+            return new ResponseEntity<>(calcResponse, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity(e, HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
